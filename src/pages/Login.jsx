@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
-import { useLoginContext } from '../context/loginContext';
+import { useStateContext } from '../context/ContextProvider';
 import { FaGoogle, FaLinkedin, FaDiscord, FaGithub } from "react-icons/fa6";
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const { isLoggedIn, setIsLoggedIn } = useLoginContext();
+  const { isLoggedIn, setIsLoggedIn, activeSidebar, setActiveSidebar } = useStateContext();
   const [error, setError] = useState('');
 
   const handleSubmit = (e) => {
@@ -27,7 +27,7 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className={`min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 ${activeSidebar?'hidden':''} md:flex`}>
       <div className="max-w-md w-full space-y-8">
         {!isLoggedIn &&(
         <>

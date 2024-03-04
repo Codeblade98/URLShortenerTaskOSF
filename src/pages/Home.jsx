@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useStateContext } from '../context/ContextProvider';
 
 const Home = () => {
   const [originalUrl, setOriginalUrl] = useState('');
   const [shortenedUrl, setShortenedUrl] = useState('');
+  const { activeSidebar, setActiveSidebar } = useStateContext();
 
   const handleShorten = () => {
     const shortUrl = 'https://short.url/' + Math.random().toString(36).substr(2, 5);
@@ -10,9 +12,9 @@ const Home = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className={`min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 ${activeSidebar?'hidden':''} md:flex`}>
       <div className="max-w-md w-full space-y-8">
-        <img src="../images/urlshortener-solid.svg" className="mx-auto h-12 w-auto"></img>
+        <img src="images/urlshortener-solid.svg" className="mx-auto h-12 w-auto"></img>
         <div>
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">URL Shortener</h2>
         </div>

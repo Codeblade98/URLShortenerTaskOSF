@@ -27,4 +27,5 @@ const PrevLinksTable = ({ previousLinks }) => {
   );
 };
 
+
 export default PrevLinksTable;

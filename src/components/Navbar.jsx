@@ -1,12 +1,12 @@
 import React from 'react'
 import { CgProfile } from "react-icons/cg";
 import { Link } from 'react-router-dom';
-import { useLoginContext } from '../context/loginContext';
+import { useStateContext } from '../context/ContextProvider';
 
 const Navbar = () => {
-  const { isLoggedIn, setIsLoggedIn } = useLoginContext();
+  const { isLoggedIn, setIsLoggedIn } = useStateContext();
   return (
-    <nav className="bg-gray-800 p-2">
+    <nav className="bg-gray-800 p-2 hidden md:flex">
       <div className="container mx-auto flex justify-between items-center">
         <div className="text-white font-semibold">
           <Link to="/">Logo</Link>
@@ -22,7 +22,7 @@ const Navbar = () => {
           </Link>)}
           {isLoggedIn ?
            (<button className="text-white hover:bg-gray-700 px-3 py-2 rounded-md mr-0" onClick={() => {setIsLoggedIn(false)}}>Log Out</button>):
-           (<button className="text-white hover:bg-gray-700 px-3 py-2 rounded-md mr-0"><Link to="/login">Log in</Link></button>)}
+           (<button className="text-white hover:bg-gray-700 px-3 py-2 rounded-md mr-0 p-0"><Link className="w-full p-0" to="/login">Log in</Link></button>)}
         </div>
       </div>
     </nav>
